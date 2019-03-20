@@ -1,0 +1,17 @@
+com/conexia/control/BillManager.class
+com/conexia/model/Waiter.class
+com/conexia/model/Client.class
+com/conexia/model/summarizer/ClientBillSummary.class
+com/conexia/control/TableManager.class
+com/conexia/model/Bill.class
+com/conexia/control/ClientManager.class
+com/conexia/model/summarizer/WaiterBillSummary.class
+com/conexia/model/Product.class
+com/conexia/model/TableRestaurant.class
+com/conexia/App.class
+com/conexia/model/Product$ProductBuilder.class
+com/conexia/model/summarizer/BillSummary.class
+com/conexia/control/WaiterManager.class
+com/conexia/control/summarizer/impl/WaiterSummarizer.class
+com/conexia/control/summarizer/impl/ClientSummarizer.class
+com/conexia/control/summarizer/Summarizer.class

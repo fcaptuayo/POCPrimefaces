@@ -1,0 +1,225 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <script name="jquery/jquery.js" library="primefaces"></script>
+</h:head>
+
+<h:head>
+    <h:outputStylesheet>
+        .ui-stack {
+            z-index: 1000;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<p:stack icon="" expanded="true">
+    <p:menuitem value="Registrar" icon="" url="/bills.xhtml"/>
+    <p:menuitem value="Meseros" icon="" url="/waiters.xhtml"/>
+    <p:menuitem value="clientes VIP" icon="" url="/clients.xhtml"/>
+</p:stack>
+
+
+<h:form id="registerBill">
+    <p:growl id="growl" sticky="true"/>
+    <p:outputPanel>
+        <h1>REGISTRO DE FACTURAS</h1>
+
+        <div class="ui-g">
+            <p:commandButton value="Crear Mesa" type="button" onclick="PF('creationTableDialog').show();"/>
+            <p:commandButton value="Crear Mesero" type="button" onclick="PF('creationWaiterDialog').show();"/>
+            <p:commandButton value="Crear Cliente" type="button" onclick="PF('creationClientDialog').show();"/>
+        </div>
+
+        <h:form>
+
+            <h3>Formulario de creación de factura</h3>
+            <div class="ui-g">
+                <div class="ui-g-4">
+                    <p:outputLabel for="billWaiter" value="Mesero"/>
+                    <p:selectOneMenu id="billWaiter" value="#{registerBill.bill.waiter}"
+                                     converter="selectWaiterToEntityConverter">>
+                        <f:selectItems value="#{registerBill.waiters}" var="waiter" itemLabel="#{waiter.name}"
+                                       itemValue="#{waiter}"/>
+                    </p:selectOneMenu>
+                    <p:message for="billWaiter"/>
+
+                    <p:outputLabel for="billTable" value="Mesa"/>
+                    <p:selectOneMenu id="billTable" value="#{registerBill.bill.tableRestaurant}"
+                                     converter="selectTablesToEntityConverter">>
+                        <f:selectItems value="#{registerBill.tables}" var="table" itemLabel="#{table.location}"
+                                       itemValue="#{table}"/>
+                    </p:selectOneMenu>
+                    <p:message for="billTable"/>
+
+                    <p:outputLabel for="billClient" value="Client"/>
+                    <p:selectOneMenu id="billClient" value="#{registerBill.bill.client}"
+                                     converter="selectClientToEntityConverter">>
+                        <f:selectItems value="#{registerBill.clients}" var="client" itemLabel="#{client.lastName}"
+                                       itemValue="#{client}"/>
+                    </p:selectOneMenu>
+                    <p:message for="billClient"/>
+                </div>
+                <div class="ui-g-4">
+                    <p:commandButton value="Agregar Producto" type="button"
+                                     onclick="PF('creationProductDialog').show();"/>
+
+                    <p:dataTable var="product" value="#{registerBill.products}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{product.name}"/>
+                        </p:column>
+
+                        <p:column headerText="Mesero">
+                            <h:outputText value="#{product.price}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                <div class="ui-g-12">
+                    <p:commandButton style="float: right" id="save" value="Registar factura"
+                                     tyleClass="ui-priority-primary"
+                                     action="#{registerBill.create}" icon="ui-icon-disk" update="registerBill">
+                        <f:ajax execute="@form" render="@form"/>
+                    </p:commandButton>
+                </div>
+            </div>
+            <div class="ui-g">
+                <h3>Ultimas facturas registradas</h3>
+                <p:dataTable var="bill" value="#{registerBill.bills}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{bill.id}"/>
+                    </p:column>
+
+                    <p:column headerText="Mesero">
+                        <h:outputText value="#{bill.waiter.lastName}"/>
+                    </p:column>
+
+                    <p:column headerText="Mesa">
+                        <h:outputText value="#{bill.tableRestaurant.location}"/>
+                    </p:column>
+
+                    <p:column headerText="Client">
+                        <h:outputText value="#{bill.client.lastName}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </div>
+        </h:form>
+    </p:outputPanel>
+
+</h:form>
+
+<p:dialog id="creationClientDialog" widgetVar="creationClientDialog" modal="true">
+    <h:form>
+        <p:growl sticky="true"/>
+        <h3>Formulario de creación de clientes</h3>
+
+        <p:outputLabel for="nameClient" value="Nombre"/>
+        <p:inputText id="nameClient" value="#{registerBill.client.name}">
+        </p:inputText>
+        <p:message for="nameClient"/>
+
+        <p:outputLabel for="lastNameClient" value="Apellido"/>
+        <p:inputText id="lastNameClient" value="#{registerBill.client.lastName}">
+        </p:inputText>
+        <p:message for="lastNameClient"/>
+
+        <p:outputLabel for="observationClient" value="Observación"/>
+        <p:inputTextarea id="observationClient" rows="10" cols="50" value="#{registerBill.client.observation}"/>
+        <p:message for="observationClient"/>
+
+        <p:commandButton value="Cancel" icon="ui-icon-cancel" onclick="creationClientDialog.hide()"/>
+        <p:commandButton style="float: right" value="Crear cliente"
+                         tyleClass="ui-priority-primary"
+                         action="#{registerBill.createClient}"
+                         icon="ui-icon-disk"
+                         oncomplete="PF('creationClientDialog').hide();"
+                         update="@form, registerBill">
+        </p:commandButton>
+    </h:form>
+</p:dialog>
+
+
+<p:dialog id="creationWaiterDialog" widgetVar="creationWaiterDialog" modal="true">
+    <h:form>
+        <p:growl sticky="true"/>
+        <h3>Formulario de creación de meseros</h3>
+
+        <p:outputLabel for="nameWaiter" value="Nombre"/>
+        <p:inputText id="nameWaiter" value="#{registerBill.waiter.name}">
+        </p:inputText>
+        <p:message for="nameWaiter"/>
+
+        <p:outputLabel for="lastNameWaiter" value="Apellido"/>
+        <p:inputText id="lastNameWaiter" value="#{registerBill.waiter.lastName}">
+        </p:inputText>
+        <p:message for="lastNameWaiter"/>
+
+        <p:commandButton value="Cancel" icon="ui-icon-cancel" onclick="creationWaiterDialog.hide()"/>
+        <p:commandButton style="float: right" value="Crear Mesero"
+                         tyleClass="ui-priority-primary"
+                         action="#{registerBill.createWaiter}"
+                         icon="ui-icon-disk"
+                         oncomplete="PF('creationWaiterDialog').hide();"
+                         update="@form, registerBill">
+        </p:commandButton>
+    </h:form>
+</p:dialog>
+
+
+<p:dialog id="creationTableDialog" widgetVar="creationTableDialog" modal="true">
+    <h:form>
+        <p:growl sticky="true"/>
+        <h3>Formulario de creación de mesas</h3>
+
+        <p:outputLabel for="locationTable" value="Localización"/>
+        <p:inputText id="locationTable" value="#{registerBill.tableRestaurant.location}">
+        </p:inputText>
+        <p:message for="locationTable"/>
+
+        <p:outputLabel for="capacityTable" value="Capacidad"/>
+        <p:inputNumber id="capacityTable" value="#{registerBill.tableRestaurant.capacity}" decimalPlaces="0">
+        </p:inputNumber>
+        <p:message for="capacityTable"/>
+
+
+        <p:commandButton value="Cancel" icon="ui-icon-cancel" onclick="creationTableDialog.hide()"/>
+        <p:commandButton style="float: right" value="Crear mesa"
+                         tyleClass="ui-priority-primary"
+                         action="#{registerBill.createTable}"
+                         icon="ui-icon-disk"
+                         oncomplete="PF('creationTableDialog').hide();"
+                         update="@form, registerBill">
+        </p:commandButton>
+    </h:form>
+</p:dialog>
+
+
+<p:dialog id="creationProductDialog" widgetVar="creationProductDialog" modal="true">
+    <h:form>
+        <p:growl sticky="true"/>
+        <h3>Formulario de creación de mesas</h3>
+
+        <p:outputLabel for="nameProduct" value="Nombre"/>
+        <p:inputText id="nameProduct" value="#{registerBill.product.name}">
+        </p:inputText>
+        <p:message for="nameProduct"/>
+
+        <p:outputLabel for="priceProduct" value="Precio"/>
+        <p:inputNumber id="priceProduct" value="#{registerBill.product.price}" decimalPlaces="5">
+        </p:inputNumber>
+        <p:message for="priceProduct"/>
+
+
+        <p:commandButton value="Cancel" icon="ui-icon-cancel" onclick="creationProductDialog.hide()"/>
+        <p:commandButton style="float: right" value="Agregar producto"
+                         tyleClass="ui-priority-primary"
+                         action="#{registerBill.addProduct}"
+                         icon="ui-icon-disk"
+                         oncomplete="PF('creationProductDialog').hide();"
+                         update="@form, registerBill">
+        </p:commandButton>
+    </h:form>
+</p:dialog>
+
+</html>

@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="TheBestEARRestaurant:ear exploded">
+    <output-path>$PROJECT_DIR$/TheBestEARRestaurant/target/TheBestEARRestaurant-1.0.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>TheBestEARRestaurant</module>
+        <packaging>ear</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TheBestEARRestaurant/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/TheBestEARRestaurant/target/TheBestEARRestaurant-1.0.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/TheBestEARRestaurant/src/main/application" />
+      <element id="archive" name="TheBestWARRestaurant-1.0.0-SNAPSHOT.war">
+        <element id="artifact" artifact-name="TheBestWARRestaurant:war exploded" />
+      </element>
+      <element id="archive" name="TheBestEJBRestaurant-1.0.0-SNAPSHOT.jar">
+        <element id="artifact" artifact-name="TheBestEJBRestaurant:ejb exploded" />
+      </element>
+      <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.4" />
+    </root>
+  </artifact>
+</component>

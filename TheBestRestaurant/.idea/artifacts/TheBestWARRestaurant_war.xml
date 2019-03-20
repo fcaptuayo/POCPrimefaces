@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TheBestWARRestaurant:war">
+    <output-path>$PROJECT_DIR$/TheBestWARRestaurant/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TheBestWARRestaurant</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TheBestWARRestaurant.war">
+      <element id="artifact" artifact-name="TheBestWARRestaurant:war exploded" />
+    </root>
+  </artifact>
+</component>

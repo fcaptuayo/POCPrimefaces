@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TheBestEARRestaurant/TheBestEARRestaurant.iml" filepath="$PROJECT_DIR$/TheBestEARRestaurant/TheBestEARRestaurant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TheBestEJBRestaurant/TheBestEJBRestaurant.iml" filepath="$PROJECT_DIR$/TheBestEJBRestaurant/TheBestEJBRestaurant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TheBestRestaurant.iml" filepath="$PROJECT_DIR$/TheBestRestaurant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TheBestWARRestaurant/TheBestWARRestaurant.iml" filepath="$PROJECT_DIR$/TheBestWARRestaurant/TheBestWARRestaurant.iml" />
+    </modules>
+  </component>
+</project>

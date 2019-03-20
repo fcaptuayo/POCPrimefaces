@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="TheBestEJBRestaurant:ejb exploded">
+    <output-path>$PROJECT_DIR$/TheBestEJBRestaurant/target/TheBestEJBRestaurant</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>TheBestEJBRestaurant</module>
+        <packaging>ejb</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TheBestEJBRestaurant/ejb/EJB" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/TheBestEJBRestaurant/target/TheBestEJBRestaurant/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="TheBestEJBRestaurant" />
+    </root>
+  </artifact>
+</component>

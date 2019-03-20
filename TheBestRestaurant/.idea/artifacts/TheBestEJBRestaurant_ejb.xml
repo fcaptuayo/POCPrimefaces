@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="TheBestEJBRestaurant:ejb">
+    <output-path>$PROJECT_DIR$/TheBestEJBRestaurant/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TheBestEJBRestaurant</module>
+        <packaging>ejb</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TheBestEJBRestaurant.jar">
+      <element id="artifact" artifact-name="TheBestEJBRestaurant:ejb exploded" />
+    </root>
+  </artifact>
+</component>

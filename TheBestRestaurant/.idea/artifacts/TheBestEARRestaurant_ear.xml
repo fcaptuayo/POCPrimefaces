@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="TheBestEARRestaurant:ear">
+    <output-path>$PROJECT_DIR$/TheBestEARRestaurant/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TheBestEARRestaurant</module>
+        <packaging>ear</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TheBestEARRestaurant-1.0.0-SNAPSHOT.ear">
+      <element id="artifact" artifact-name="TheBestEARRestaurant:ear exploded" />
+    </root>
+  </artifact>
+</component>

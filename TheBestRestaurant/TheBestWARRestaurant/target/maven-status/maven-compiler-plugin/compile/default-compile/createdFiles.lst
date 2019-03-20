@@ -1,0 +1,6 @@
+com/conexia/boundary/SummaryClient.class
+com/conexia/converter/SelectTablesToEntityConverter.class
+com/conexia/converter/SelectWaiterToEntityConverter.class
+com/conexia/boundary/SummaryWaiter.class
+com/conexia/converter/SelectClientToEntityConverter.class
+com/conexia/boundary/RegisterBill.class

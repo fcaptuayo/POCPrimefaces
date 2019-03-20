@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <script name="jquery/jquery.js" library="primefaces"></script>
+</h:head>
+
+<h:head>
+    <h:outputStylesheet>
+        .ui-stack {
+            z-index: 1000;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<p:stack icon="" expanded="true">
+    <p:menuitem value="Registrar" icon="" url="/bills.xhtml"/>
+    <p:menuitem value="Meseros" icon="" url="/waiters.xhtml"/>
+    <p:menuitem value="clientes VIP" icon="" url="/clients.xhtml"/>
+</p:stack>
+
+<h:form id="form">
+    <p:outputPanel>
+        <h3>Resumen facturación clientes con vestas mayores a 100.000</h3>
+        <div class="ui-g">
+            <div class="ui-g-2"/>
+            <div class="ui-g-8">
+                <p:growl id="growl" sticky="true"/>
+                <p:dataTable id="customerList" var="client" value="#{summaryClient.clients}">
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{client.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Apellido">
+                        <h:outputText value="#{client.lastName}"/>
+                    </p:column>
+
+                    <p:column headerText="Valor de la compra">
+                        <h:outputText value="#{client.price}"/>
+                    </p:column>
+
+                </p:dataTable>
+                <br/>
+            </div>
+            <div class="ui-g-2">
+            </div>
+        </div>
+    </p:outputPanel>
+
+</h:form>
+</html>
